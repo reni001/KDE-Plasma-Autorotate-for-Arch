@@ -64,13 +64,19 @@ echo  ""
 
 echo  "Installing Libraries:"
 echo  ""
-sudo apt-get install libnotify-bin
-sudo apt-get install onboard
-sudo apt-get install xdotool
-sudo apt-get install iio-sensor-proxy
-sudo apt-get install zenity
-sudo apt-get install libqt5virtualkeyboard5 qtvirtualkeyboard-plugin maliit-keyboard
+#sudo apt-get install libnotify-bin
+#sudo apt-get install onboard
+#sudo apt-get install xdotool
+#sudo apt-get install iio-sensor-proxy
+#sudo apt-get install zenity
+#sudo apt-get install libqt5virtualkeyboard5 qtvirtualkeyboard-plugin maliit-keyboard
 
+sudo pacman -S libnotify
+sudo pacman -S onboard
+sudo pacman -S xdotool
+sudo pacman -S iio-sensor-proxy
+sudo pacman -S zenity
+sudo pacman -S install libqt5virtualkeyboard5 qtvirtualkeyboard-plugin maliit-keyboard
 
 while true
 do
@@ -198,6 +204,14 @@ sudo cp ./Payload/Autorotate_rot.sh /usr/bin/
 sudo cp ./Payload/Autorotate_clean.sh /usr/bin/
 sudo cp ./Payload/virtualkbd.conf /etc/sddm.conf.d
 cp ./Payload/Autorotate.desktop  $HOME/Desktop
+
+#Change file permissions
+sudo chmod 777 /etc/rc.local
+sudo chmod 777 /usr/share/applications/Autorotate.desktop
+sudo chmod 777 /usr/bin/Autorotate_toggle.sh
+sudo chmod 777 /usr/bin/Autorotate_pos.sh
+sudo chmod 777 /usr/bin/Autorotate_rot.sh
+sudo chmod 777 /usr/bin/Autorotate_clean.sh
 
 #finish config
 echo  "Populating system configuration files"
