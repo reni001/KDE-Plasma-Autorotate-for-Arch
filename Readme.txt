@@ -2,6 +2,7 @@
                      ##################################################################
                      ###                   Autorotate for KDE Plasma                ###
                      ### Developed by sergio melas (sergiomelas@gmail.com) 2021-25  ###
+                     ### modified for Arch based Distros                   2025     ### 
                      ##################################################################
                      ##################################################################
 
@@ -103,3 +104,5 @@ V2.7  2025-01-29
   -Corrected bug in plasma 6
 V2.8  2025-08-11
   -Added support for wayland on plasma 6 & Cristal Dock for KDE Plasma Wayland
+V2.8.1 2025-08-13
+  -changed commands to be able to be installed on Arch based distros
