@@ -38,7 +38,34 @@ VAR=$0
 DIR="$(dirname "${VAR}")"
 cd  "${DIR}"
 
-echo -n "Did you prepared config file  (y/N)? "
+#choose the distro
+ echo  ""
+   echo -n "Which Linux Distro are you using? "
+   array=(' ' 'Debian based' 'Fedora based'  'Arch based')
+   Distro=$(zenity --entry --title "Linux Distribution" --text "${array[@]}" --text "Plese choose the Linux distro.")
+   echo  -n "Processing for "
+
+   case $Distro in
+
+     'Debian based')
+       echo  "Debian based Distros"
+       ;;
+
+      'Fedora based')
+       echo  "Fedora based Distros"
+       ;;
+
+       'Arch based')
+       echo  "Arch based Distros"
+       ;;
+
+      *)
+      echo -n "unknown, use default"
+      ;;
+   esac
+
+echo ""
+echo -n "Did you prepared config file? Only necessary in case of using x11 (y/N) "
 read resp
 
 
@@ -64,19 +91,51 @@ echo  ""
 
 echo  "Installing Libraries:"
 echo  ""
-#sudo apt-get install libnotify-bin
-#sudo apt-get install onboard
-#sudo apt-get install xdotool
-#sudo apt-get install iio-sensor-proxy
-#sudo apt-get install zenity
-#sudo apt-get install libqt5virtualkeyboard5 qtvirtualkeyboard-plugin maliit-keyboard
 
-sudo pacman -S libnotify
-sudo pacman -S onboard
-sudo pacman -S xdotool
-sudo pacman -S iio-sensor-proxy
-sudo pacman -S zenity
-sudo pacman -S libqt5virtualkeyboard5 qtvirtualkeyboard-plugin maliit-keyboard
+case $Distro in
+
+     'Debian based')
+       echo  "Debian based Distros"
+       sudo apt-get install libnotify-bin
+       sudo apt-get install onboard
+       sudo apt-get install xdotool
+       sudo apt-get install iio-sensor-proxy
+       sudo apt-get install zenity
+       sudo apt-get install libqt5virtualkeyboard5 qtvirtualkeyboard-plugin maliit-keyboard
+       ;;
+
+      'Fedora based')
+       echo  "Fedora based Distros"
+       sudo dnf install libnotify-bin
+       sudo dnf install onboard
+       sudo dnf install xdotool
+       sudo dnf install iio-sensor-proxy
+       sudo dnf install zenity
+       sudo dnf install libqt5virtualkeyboard5 qtvirtualkeyboard-plugin maliit-keyboard
+       ;;
+
+       'Arch based')
+       echo  "Arch based Distros"
+       sudo pacman -S libnotify
+       sudo pacman -S onboard
+       sudo pacman -S xdotool
+       sudo pacman -S iio-sensor-proxy
+       sudo pacman -S zenity
+       sudo pacman -S qt5-virtualkeyboard maliit-keyboard
+       #sudo pacman -S libqt5virtualkeyboard5 qtvirtualkeyboard-plugin maliit-keyboard
+       ;;
+
+      *)
+      echo -n "unknown"
+      sudo apt-get install libnotify-bin
+      sudo apt-get install onboard
+      sudo apt-get install xdotool
+      sudo apt-get install iio-sensor-proxy
+      sudo apt-get install zenity
+      sudo apt-get install libqt5virtualkeyboard5 qtvirtualkeyboard-plugin maliit-keyboard
+      ;;
+   esac
+
 
 while true
 do
@@ -84,7 +143,7 @@ do
    echo  ""
    echo -n "Choose the theme : "
    array=('Blue round arrow rotation' 'Green Red ipad rotation'  'Black Phone rotation' 'White Phone rotation' 'Brown Arrows rotation' 'Rainbow Arrows rotation Dark' 'Rainbow Arrows rotation Light')
-   Theme=$(zenity --entry --title "Window title" --text "${array[@]}" --text "Plese choose the theme set.")
+   Theme=$(zenity --entry --title "Icon Style" --text "${array[@]}" --text "Plese choose the theme set.")
    echo  -n "The iconset of $Theme is : "
 
    case $Theme in
