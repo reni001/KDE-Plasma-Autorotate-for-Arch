@@ -76,7 +76,7 @@ sudo pacman -S onboard
 sudo pacman -S xdotool
 sudo pacman -S iio-sensor-proxy
 sudo pacman -S zenity
-sudo pacman -S install libqt5virtualkeyboard5 qtvirtualkeyboard-plugin maliit-keyboard
+sudo pacman -S libqt5virtualkeyboard5 qtvirtualkeyboard-plugin maliit-keyboard
 
 while true
 do
